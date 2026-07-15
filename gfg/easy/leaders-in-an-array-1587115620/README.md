@@ -43,27 +43,32 @@ Explanation: When an array is sorted in non-increasing order, all elements are l
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-07-15T04:48:39.438Z  
+**Submitted:** 2026-07-15T04:48:50.840Z  
 
 ```java
 class Solution {
     static ArrayList<Integer> leaders(int arr[]) {
-       ArrayList<Integer> res = new ArrayList<>();
-       int n = arr.length;
-       int curmax = arr[n-1];
-       res.add(curmax);
-       
-       for(int i=n-2;i>=0;i--){
-           if(curmax <= arr[i]){
-               curmax = arr[i];
-               res.add(curmax);
-           }
-       }
-       Collections.reverse(res);
+
+        ArrayList<Integer> res = new ArrayList<>();
+
+        int n = arr.length;
+        int curmax = arr[n - 1];
+
+        res.add(curmax);
+
+        for (int i = n - 2; i >= 0; i--) {
+
+            if (arr[i] >= curmax) {
+                curmax = arr[i];
+                res.add(curmax);
+            }
+        }
+
+        Collections.reverse(res);
+
         return res;
     }
 }
-
 ```
 
 ---
