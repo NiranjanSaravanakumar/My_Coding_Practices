@@ -47,26 +47,27 @@ Hence, `GCD(sumOdd, sumEven) = GCD(25, 30) = 5`.
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 1 ms (beats 83.11%)  
-**Memory:** 42.4 MB (beats 86.19%)  
-**Submitted:** 2026-07-15T04:01:08.076Z  
+**Language:** Python  
+**Runtime:** 42 ms (beats 16.62%)  
+**Memory:** 19.3 MB (beats 21.29%)  
+**Submitted:** 2026-07-15T04:02:38.277Z  
 
-```java
-class Solution {
-    public int gcdOfOddEvenSums(int n) {
-        return n*gcd(n, n+1);
+```py
+class Solution:
+    def gcdOfOddEvenSums(self, n: int) -> int:
+        esum,osum=0,0
+
+        for i in range(1,2*n+1):
+            if i%2 != 0:
+                osum += i
+            else:
+                esum += i
         
-    }
-    public static int gcd(int a, int b){
-        while(b != 0){
-        int temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-    }
-}
+        while(esum!=0):
+            temp = esum
+            esum = osum%esum
+            osum = temp
+        return osum
 ```
 
 ---
