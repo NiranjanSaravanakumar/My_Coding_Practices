@@ -41,24 +41,22 @@ Explanation: There are three ways to climb to the top.
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 42.1 MB (beats 54.62%)  
-**Submitted:** 2026-07-15T05:37:13.654Z  
+**Memory:** 19.1 MB (beats 86.23%)  
+**Submitted:** 2026-07-15T05:38:50.709Z  
 
-```java
-class Solution {
-    public int climbStairs(int n) {
-        int a = 0,b=1,res = 0;
-
-        for(int i=0;i<n;i++){
-            res = a + b;
-            a = b;
-            b =res;
-        }
-        return res;
-    }
-}
+```py
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a,b,res = 0,1,0
+        
+        for _ in range(n):
+            res = a+b
+            a = b
+            b = res
+            
+        return res
 ```
 
 ---
