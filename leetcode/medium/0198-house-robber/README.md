@@ -39,32 +39,28 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 43 MB (beats 18.66%)  
-**Submitted:** 2026-07-15T05:41:37.456Z  
+**Memory:** 19.2 MB (beats 60.77%)  
+**Submitted:** 2026-07-15T05:41:51.529Z  
 
-```java
-class Solution {
-    public int rob(int[] nums) {
-        int n = nums.length;
-
-        if (n == 1) {
-            return nums[0];
-        }
-
-        int[] dp = new int[n];
-
-        dp[0] = nums[0];
-        dp[1] = Math.max(nums[0], nums[1]);
-
-        for (int i = 2; i < n; i++) {
-            dp[i] = Math.max(dp[i - 1], nums[i] + dp[i - 2]);
-        }
-
-        return dp[n - 1];        
-    }
-}
+```py
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        
+        if n == 1:
+            return nums[0]
+        
+        dp = [0] * n
+        
+        dp[0] = nums[0]
+        dp[1] = max(nums[0], nums[1])
+        
+        for i in range(2, n):
+            dp[i] = max(dp[i-1], nums[i] + dp[i-2])
+        
+        return dp[-1] 
 ```
 
 ---
