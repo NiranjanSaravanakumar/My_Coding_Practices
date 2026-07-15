@@ -31,19 +31,25 @@ Explanation: There is no repeating element in the array, so the output is empty.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-07-15T05:11:07.000Z  
+**Submitted:** 2026-07-15T05:12:23.795Z  
 
 ```java
 class Solution {
     public ArrayList<Integer> findDuplicates(int[] arr) {
-        Set<Integer> set = new HashSet<>();
+
+        Arrays.sort(arr);
+
         ArrayList<Integer> res = new ArrayList<>();
-        for(int a:arr){
-            if(set.contains(a)){
-                res.add(a);
+
+        for (int i = 1; i < arr.length; i++) {
+
+            if (arr[i] == arr[i - 1]) {
+
+                if (res.isEmpty() || res.get(res.size() - 1) != arr[i])
+                    res.add(arr[i]);
             }
-            set.add(a);
         }
+
         return res;
     }
 }
