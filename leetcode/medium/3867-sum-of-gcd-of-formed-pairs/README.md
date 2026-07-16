@@ -73,46 +73,39 @@ Form pairs: `gcd(2, 8) = 2` and `gcd(3, 6) = 3`. Thus, the sum is `2 + 3 = 5`.
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 56 ms (beats 66.50%)  
-**Memory:** 108 MB (beats 63.50%)  
-**Submitted:** 2026-07-16T15:53:19.274Z  
+**Language:** Python  
+**Runtime:** 474 ms (beats 20.36%)  
+**Memory:** 33.2 MB (beats 99.40%)  
+**Submitted:** 2026-07-16T15:51:58.626Z  
 
-```java
-class Solution {
-    public long gcdSum(int[] nums) {
-        int n = nums.length;
-        int[] prefixGcd = new int[n];
+```py
+class Solution:
+    def gcd(self, a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
 
-        int max = 0;
-        for (int i = 0; i < n; i++) {
-            max = Math.max(max, nums[i]);
-            prefixGcd[i] = gcd(nums[i], max);
-        }
+    def gcdSum(self, nums: list[int]) -> int:
+        n = len(nums)
+        prefixGcd = [0] * n
 
-        Arrays.sort(prefixGcd);
+        mx = 0
+        for i in range(n):
+            if nums[i] > mx:
+                mx = nums[i]
+            prefixGcd[i] = self.gcd(nums[i], mx)
 
-        long ans = 0;
-        int i = 0, j = n - 1;
+        prefixGcd.sort()
 
-        while (i < j) {
-            ans += gcd(prefixGcd[i], prefixGcd[j]);
-            i++;
-            j--;
-        }
+        ans = 0
+        i, j = 0, n - 1
 
-        return ans;
-    }
+        while i < j:
+            ans += self.gcd(prefixGcd[i], prefixGcd[j])
+            i += 1
+            j -= 1
 
-    public int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-}
+        return ans
 ```
 
 ---
