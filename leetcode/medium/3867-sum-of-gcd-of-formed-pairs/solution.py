@@ -1,12 +1,18 @@
 class Solution:
+    def gcd(self, a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
     def gcdSum(self, nums: list[int]) -> int:
         n = len(nums)
         prefixGcd = [0] * n
 
         mx = 0
         for i in range(n):
-            mx = max(mx, nums[i])
-            prefixGcd[i] = gcd(nums[i], mx)
+            if nums[i] > mx:
+                mx = nums[i]
+            prefixGcd[i] = self.gcd(nums[i], mx)
 
         prefixGcd.sort()
 
@@ -14,7 +20,7 @@ class Solution:
         i, j = 0, n - 1
 
         while i < j:
-            ans += gcd(prefixGcd[i], prefixGcd[j])
+            ans += self.gcd(prefixGcd[i], prefixGcd[j])
             i += 1
             j -= 1
 
