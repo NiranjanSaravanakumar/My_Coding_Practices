@@ -74,9 +74,9 @@ Form pairs: `gcd(2, 8) = 2` and `gcd(3, 6) = 3`. Thus, the sum is `2 + 3 = 5`.
 ## Solution
 
 **Language:** Python  
-**Runtime:** 474 ms (beats 20.36%)  
-**Memory:** 33.2 MB (beats 99.40%)  
-**Submitted:** 2026-07-16T15:51:58.626Z  
+**Runtime:** 0 ms  
+**Memory:** 19.2 MB  
+**Submitted:** 2026-07-16T15:51:42.437Z  
 
 ```py
 class Solution:
