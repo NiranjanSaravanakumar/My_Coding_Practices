@@ -51,20 +51,19 @@ Return the  **maximum**  possible element that can appear in any valid sequence.
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 1 ms (beats 100.00%)  
-**Memory:** 42.4 MB (beats 100.00%)  
-**Submitted:** 2026-07-18T15:09:42.633Z  
+**Language:** Python  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 19.3 MB  
+**Submitted:** 2026-07-18T15:10:38.082Z  
 
-```java
-class Solution {
-    public long maximumValue(int n, int s, int m) {
-        if(n ==1)
-            return s;
-        long peeks = n/2;
-        return s + m + (peeks -1)*(m-1);
-    }
-}
+```py
+class Solution:
+    def maximumValue(self, n: int, s: int, m: int) -> int:
+        if n == 1:
+            return s
+        peeks = n // 2
+
+        return s + m + (peeks - 1) *(m-1)
 ```
 
 ---
