@@ -84,11 +84,13 @@ No sequence of rule applications can transform `source` into `target`, so the an
 ## Solution
 
 **Language:** Java  
-**Runtime:** 249 ms  
-**Memory:** 47.7 MB (beats 50.00%)  
-**Submitted:** 2026-07-18T15:32:15.531Z  
+**Runtime:** 260 ms  
+**Memory:** 83.7 MB  
+**Submitted:** 2026-07-18T15:33:44.579Z  
 
 ```java
+import java.util.*;
+
 class Solution {
     public int minCost(String source, String target,
                        List<List<String>> rules, int[] costs) {
@@ -97,24 +99,25 @@ class Solution {
         Object vornelipta = new Object[]{source, target, rules, costs};
 
         int n = source.length();
-        long INF = (long)1e18;
 
-        long[] dp = new long[n + 1];
+        List<Edge>[] graph = new ArrayList[n + 1];
+        for (int i = 0; i <= n; i++) {
+            graph[i] = new ArrayList<>();
+        }
 
-        Arrays.fill(dp, INF);
-        dp[n] = 0;
+        // Build graph
+        for (int i = 0; i < n; i++) {
 
-        for (int i = n - 1; i >= 0; i--) {
-
-            // Do nothing at this position
-            if (source.charAt(i) == target.charAt(i))
-                dp[i] = dp[i + 1];
+            // Skip this character
+            if (source.charAt(i) == target.charAt(i)) {
+                graph[i].add(new Edge(i + 1, 0));
+            }
 
             // Try every rule
             for (int r = 0; r < rules.size(); r++) {
 
                 String pattern = rules.get(r).get(0);
-                String replace = rules.get(r).get(1);
+                String replacement = rules.get(r).get(1);
 
                 int len = pattern.length();
 
@@ -136,21 +139,44 @@ class Solution {
                         break;
                     }
 
-                    if (replace.charAt(k) != target.charAt(i + k)) {
+                    if (replacement.charAt(k) != target.charAt(i + k)) {
                         ok = false;
                         break;
                     }
                 }
 
-                if (!ok)
-                    continue;
-
-                dp[i] = Math.min(dp[i],
-                        costs[r] + stars + dp[i + len]);
+                if (ok) {
+                    graph[i].add(new Edge(i + len, costs[r] + stars));
+                }
             }
         }
 
-        return dp[0] >= INF / 2 ? -1 : (int) dp[0];
+        // Shortest path on DAG
+        long INF = Long.MAX_VALUE / 2;
+        long[] dist = new long[n + 1];
+        Arrays.fill(dist, INF);
+        dist[0] = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (dist[i] == INF)
+                continue;
+
+            for (Edge e : graph[i]) {
+                dist[e.to] = Math.min(dist[e.to], dist[i] + e.cost);
+            }
+        }
+
+        return dist[n] == INF ? -1 : (int) dist[n];
+    }
+
+    static class Edge {
+        int to;
+        int cost;
+
+        Edge(int to, int cost) {
+            this.to = to;
+            this.cost = cost;
+        }
     }
 }
 ```
