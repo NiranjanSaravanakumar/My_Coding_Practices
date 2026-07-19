@@ -37,39 +37,36 @@ Output: "acdb"
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 5 ms (beats 16.39%)  
-**Memory:** 43.1 MB (beats 31.44%)  
-**Submitted:** 2026-07-19T15:02:05.824Z  
+**Language:** Python  
+**Runtime:** 1 ms (beats 54.00%)  
+**Memory:** 19.3 MB (beats 39.11%)  
+**Submitted:** 2026-07-19T15:03:34.416Z  
 
-```java
-class Solution {
-    public String smallestSubsequence(String s) {
-        int[] lastIndex = new int[26];
-        // Store last occurrence of each character
-        for (int i = 0; i < s.length(); i++) {
-            lastIndex[s.charAt(i) - 'a'] = i;
-        }
-        boolean[] visited = new boolean[26];
-        Stack<Character> stack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            // Skip if already included
-            if (visited[ch - 'a'])  continue;
-            // Remove larger characters if they appear later
-            while (!stack.isEmpty()  && stack.peek() > ch && lastIndex[stack.peek() - 'a'] > i) {
-                visited[stack.pop() - 'a'] = false;
-            }
-            stack.push(ch);
-            visited[ch - 'a'] = true;
-        }
-        String ans = "";
-        for (char c : stack){
-            ans+=c;
-        }
-        return ans;
-    }
-}
+```py
+class Solution:
+    def smallestSubsequence(self, s: str) -> str:
+        # Store last occurrence of each character
+        last_index = {}
+        for i, ch in enumerate(s):
+            last_index[ch] = i
+
+        stack = []
+        visited = set()
+
+        for i, ch in enumerate(s):
+
+            # Skip if already included
+            if ch in visited:
+                continue
+
+            # Remove larger characters if they appear later
+            while stack and stack[-1] > ch and last_index[stack[-1]] > i:
+                visited.remove(stack.pop())
+
+            stack.append(ch)
+            visited.add(ch)
+
+        return "".join(stack)
 ```
 
 ---
