@@ -38,9 +38,9 @@ Output: "acdb"
 ## Solution
 
 **Language:** Java  
-**Runtime:** 3 ms (beats 71.44%)  
-**Memory:** 43 MB (beats 47.01%)  
-**Submitted:** 2026-07-19T14:56:39.484Z  
+**Runtime:** 5 ms (beats 16.39%)  
+**Memory:** 43.1 MB (beats 31.44%)  
+**Submitted:** 2026-07-19T15:02:05.824Z  
 
 ```java
 class Solution {
@@ -63,11 +63,11 @@ class Solution {
             stack.push(ch);
             visited[ch - 'a'] = true;
         }
-        StringBuilder ans = new StringBuilder();
+        String ans = "";
         for (char c : stack){
-            ans.append(c);
+            ans+=c;
         }
-        return ans.toString();
+        return ans;
     }
 }
 ```
