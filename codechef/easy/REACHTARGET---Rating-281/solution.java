@@ -8,17 +8,10 @@ class Codechef
 	{
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
-		
-		while(t-- >0){
-		    int a = sc.nextInt();
-		    int b = sc.nextInt();
-		    
-		    if(a > b){
-		        System.out.println('A');
-		    }
-		    else{
-		        System.out.println('B');
-		    }
+		while(t-- > 0){
+		    int x = sc.nextInt();
+		    int y = sc.nextInt();
+		    System.out.println(x-y);
 		}
 
 	}
