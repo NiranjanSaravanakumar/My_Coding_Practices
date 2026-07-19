@@ -18,10 +18,10 @@ class Solution {
             stack.push(ch);
             visited[ch - 'a'] = true;
         }
-        StringBuilder ans = new StringBuilder();
+        String ans = "";
         for (char c : stack){
-            ans.append(c);
+            ans+=c;
         }
-        return ans.toString();
+        return ans;
     }
 }
