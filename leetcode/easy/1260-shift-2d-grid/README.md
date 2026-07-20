@@ -53,47 +53,33 @@ Output: [[1,2,3],[4,5,6],[7,8,9]]
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 5 ms (beats 83.45%)  
-**Memory:** 47.3 MB (beats 26.21%)  
-**Submitted:** 2026-07-20T13:35:36.456Z  
+**Language:** Python  
+**Runtime:** 7 ms (beats 58.44%)  
+**Memory:** 19.6 MB (beats 48.15%)  
+**Submitted:** 2026-07-20T13:36:51.164Z  
 
-```java
-class Solution {
-    public List<List<Integer>> shiftGrid(int[][] grid, int k) {
-        int m = grid.length;
-        int n = grid[0].length;
-        int total = m * n;
+```py
+class Solution:
+    def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
+        m = len(grid)
+        n = len(grid[0])
+        total = m * n
 
-        k %= total;
+        k %= total
 
-        int[][] ans = new int[m][n];
+        ans = [[0] * n for _ in range(m)]
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                int idx = i * n + j;
-                int newIdx = (idx + k) % total;
+        for i in range(m):
+            for j in range(n):
+                idx = i * n + j
+                new_idx = (idx + k) % total
 
-                int newRow = newIdx / n;
-                int newCol = newIdx % n;
+                new_row = new_idx // n
+                new_col = new_idx % n
 
-                ans[newRow][newCol] = grid[i][j];
-            }
-        }
+                ans[new_row][new_col] = grid[i][j]
 
-        List<List<Integer>> result = new ArrayList<>();
-
-        for (int[] row : ans) {
-            List<Integer> list = new ArrayList<>();
-            for (int num : row) {
-                list.add(num);
-            }
-            result.add(list);
-        }
-
-        return result;
-    }
-}
+        return ans
 ```
 
 ---
