@@ -70,7 +70,7 @@ The number of ways to choose the leaders is $18$.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-07-20T14:05:48.014Z  
+**Submitted:** 2026-07-20T14:05:58.276Z  
 
 ```java
 import java.util.*;
