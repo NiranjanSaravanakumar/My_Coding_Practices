@@ -49,7 +49,7 @@ A total of $17$ items are produced, which is at least $15$. It is not possible t
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-07-20T16:28:04.231Z  
+**Submitted:** 2026-07-20T16:32:09.305Z  
 
 ```java
 import java.util.*;
