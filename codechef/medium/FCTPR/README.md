@@ -49,7 +49,7 @@ A total of $17$ items are produced, which is at least $15$. It is not possible t
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-07-20T16:26:28.193Z  
+**Submitted:** 2026-07-20T14:00:25.801Z  
 
 ```java
 import java.util.*;
@@ -58,42 +58,10 @@ import java.io.*;
 
 class Codechef
 {
-    static boolean canpro(long time ,int [] a,long x){
-        long total =0;
-        for(int t:a){
-            total += time/t;
-            if(total >= x)
-                return true;
-        }
-        return false;
-    }
-    
 	public static void main (String[] args) throws java.lang.Exception
 	{
-		int n = sc.nextInt();
-		long x = sc.nextInt();
-		
-		int [] a = new int [n];
-		int mintime = Integer.MAX_VALUE;
-		for(int i=0;i<n;i++){
-		    a[i] = sc.nextInt();
-		    mintime = Math.min(mintime,a[i]);
-		}
-		long = l = 0;
-		long h = (lon) mintime * x;
-		long ans = h;
-		
-		while(l<=h){
-		    long m = l+(h-l)/2;
-		    if(canpro(m,a,x)){
-		        ans = m;
-		        h = m -1;
-		    }
-		    else{
-		        l = mid +1;
-		    }
-		}
-        System.out.println(ans);
+		// your code goes here
+
 	}
 }
 
