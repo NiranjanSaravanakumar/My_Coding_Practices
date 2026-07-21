@@ -33,32 +33,26 @@ Output: false
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 4 ms (beats 82.74%)  
-**Memory:** 42.4 MB (beats 5.31%)  
-**Submitted:** 2026-07-21T03:32:02.677Z  
+**Language:** Python  
+**Runtime:** 0 ms  
+**Memory:** 19.1 MB  
+**Submitted:** 2026-07-21T03:35:23.789Z  
 
-```java
-class Solution {
-    public boolean judgeSquareSum(int c) {
-        long left = 0;
-        long right =(long) Math.sqrt(c);
+```py
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        l = 0
+        r = int(sqrt(c))
 
-        while(left <= right){
-            long sum = left * left + right * right;
-            if(sum == c){
-                return true;
-            }
-            else if(sum < c){
-                left++;
-            }
-            else{
-                right--;
-            }
-        }
-        return false;
-    }
-}
+        while l<= r:
+            sum = l*l + r*r
+            if sum == c:
+                return True
+            elif sum < c:
+                l += 1
+            else:
+                r -= 1
+        return False
 ```
 
 ---
