@@ -75,47 +75,39 @@ Because there is no block of `'1'`s surrounded by `'0'`s, no valid trade is poss
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 144 ms (beats 25.35%)  
-**Memory:** 48.8 MB (beats 21.13%)  
-**Submitted:** 2026-07-21T14:31:46.877Z  
+**Language:** Python  
+**Runtime:** 1174 ms (beats 19.62%)  
+**Memory:** 23 MB (beats 34.58%)  
+**Submitted:** 2026-07-21T14:32:44.159Z  
 
-```java
-class Solution {
-    public int maxActiveSectionsAfterTrade(String s) {
-        int ones  =0 ;
+```py
+class Solution:
+    def maxActiveSectionsAfterTrade(self, s: str) -> int:
+        ones = s.count('1')
 
-        for(char c:s.toCharArray()){
-            if (c == '1'){
-                ones++;
-            }
-        }
-        String t = "1" + s + "1";
-        ArrayList<Character> ch = new ArrayList<>();
-        ArrayList<Integer> len = new ArrayList<>();
+        t = "1" + s + "1"
 
-        int i =0;
-        while(i<t.length()){
-            char c = t.charAt(i);
-            int j =i;
-            while(j<t.length() && c==t.charAt(j)){
-                j++;
-            }
-            ch.add(c);
-            len.add(j-i);
-            i = j;
-        }
-        int maxgain = 0;
+        ch = []
+        length = []
 
-        for(int k=1;k<ch.size()-1;k++){
-            if(ch.get(k)=='1' && ch.get(k-1) == '0' && ch.get(k+1) == '0'){
-                int gain = len.get(k-1) + len.get(k+1);
-                maxgain = Math.max(maxgain,gain);
-            }
-        }
-        return ones + maxgain;
-    }
-}
+        i = 0
+        while i < len(t):
+            c = t[i]
+            j = i
+            while j < len(t) and t[j] == c:
+                j += 1
+            ch.append(c)
+            length.append(j - i)
+            i = j
+
+        max_gain = 0
+
+        for k in range(1, len(ch) - 1):
+            if ch[k] == '1' and ch[k - 1] == '0' and ch[k + 1] == '0':
+                gain = length[k - 1] + length[k + 1]
+                max_gain = max(max_gain, gain)
+
+        return ones + max_gain
 ```
 
 ---
