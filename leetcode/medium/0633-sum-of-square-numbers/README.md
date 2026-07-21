@@ -34,24 +34,26 @@ Output: false
 ## Solution
 
 **Language:** Python  
-**Runtime:** 57 ms (beats 67.15%)  
-**Memory:** 19.4 MB (beats 25.20%)  
-**Submitted:** 2026-07-21T03:35:29.340Z  
+**Runtime:** 52 ms (beats 91.70%)  
+**Memory:** 19.2 MB (beats 97.70%)  
+**Submitted:** 2026-07-21T03:35:59.694Z  
 
 ```py
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
         l = 0
-        r = int(sqrt(c))
+        r = isqrt(c)
 
-        while l<= r:
-            sum = l*l + r*r
-            if sum == c:
+        while l <= r:
+            total = l * l + r * r
+
+            if total == c:
                 return True
-            elif sum < c:
+            elif total < c:
                 l += 1
             else:
                 r -= 1
+
         return False
 ```
 
