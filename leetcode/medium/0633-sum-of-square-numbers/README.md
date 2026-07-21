@@ -34,9 +34,9 @@ Output: false
 ## Solution
 
 **Language:** Python  
-**Runtime:** 0 ms  
-**Memory:** 19.1 MB  
-**Submitted:** 2026-07-21T03:35:23.789Z  
+**Runtime:** 57 ms (beats 67.15%)  
+**Memory:** 19.4 MB (beats 25.20%)  
+**Submitted:** 2026-07-21T03:35:29.340Z  
 
 ```py
 class Solution:
