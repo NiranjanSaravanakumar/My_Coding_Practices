@@ -75,37 +75,60 @@ Because there is no block of `'1'`s surrounded by `'0'`s, no valid trade is poss
 
 ## Solution
 
-**Language:** Python  
-**Runtime:** 1175 ms (beats 19.62%)  
-**Memory:** 21.6 MB (beats 40.19%)  
-**Submitted:** 2026-07-21T14:34:01.327Z  
+**Language:** Java  
+**Runtime:** 0 ms  
+**Memory:** 43 MB  
+**Submitted:** 2026-07-21T14:33:20.823Z  
 
-```py
-class Solution:
-    def maxActiveSectionsAfterTrade(self, s: str) -> int:
-        ones = s.count('1')
+```java
+class Solution {
+    public int maxActiveSectionsAfterTrade(String s) {
+        int ones = 0;
+        for (char c : s.toCharArray())
+            if (c == '1') ones++;
 
-        t = '1' + s + '1'
+        String t = "1" + s + "1";
+        int n = t.length();
 
-        ch = []
-        length = []
+        int maxGain = 0;
+        int i = 0;
 
-        i = 0
-        while i < len(t):
-            j = i
-            while j < len(t) and t[j] == t[i]:
-                j += 1
-            ch.append(t[i])
-            length.append(j - i)
-            i = j
+        while (i < n) {
+            char prevChar = t.charAt(i);
+            int prevLen = 0;
+            while (i < n && t.charAt(i) == prevChar) {
+                prevLen++;
+                i++;
+            }
 
-        maxGain = 0
+            if (i >= n) break;
 
-        for k in range(1, len(ch) - 1):
-            if ch[k] == '1' and ch[k-1] == '0' and ch[k+1] == '0':
-                maxGain = max(maxGain, length[k-1] + length[k+1])
+            char midChar = t.charAt(i);
+            int midLen = 0;
+            while (i < n && t.charAt(i) == midChar) {
+                midLen++;
+                i++;
+            }
 
-        return ones + maxGain
+            if (i >= n) break;
+
+            char nextChar = t.charAt(i);
+            int nextLen = 0;
+            while (i < n && t.charAt(i) == nextChar) {
+                nextLen++;
+                i++;
+            }
+
+            if (prevChar == '0' && midChar == '1' && nextChar == '0') {
+                maxGain = Math.max(maxGain, prevLen + nextLen);
+            }
+
+            i -= nextLen;
+        }
+
+        return ones + maxGain;
+    }
+}
 ```
 
 ---
