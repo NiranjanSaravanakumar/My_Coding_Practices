@@ -76,38 +76,36 @@ Because there is no block of `'1'`s surrounded by `'0'`s, no valid trade is poss
 ## Solution
 
 **Language:** Python  
-**Runtime:** 1174 ms (beats 19.62%)  
-**Memory:** 23 MB (beats 34.58%)  
-**Submitted:** 2026-07-21T14:32:44.159Z  
+**Runtime:** 1175 ms (beats 19.62%)  
+**Memory:** 21.6 MB (beats 40.19%)  
+**Submitted:** 2026-07-21T14:34:01.327Z  
 
 ```py
 class Solution:
     def maxActiveSectionsAfterTrade(self, s: str) -> int:
         ones = s.count('1')
 
-        t = "1" + s + "1"
+        t = '1' + s + '1'
 
         ch = []
         length = []
 
         i = 0
         while i < len(t):
-            c = t[i]
             j = i
-            while j < len(t) and t[j] == c:
+            while j < len(t) and t[j] == t[i]:
                 j += 1
-            ch.append(c)
+            ch.append(t[i])
             length.append(j - i)
             i = j
 
-        max_gain = 0
+        maxGain = 0
 
         for k in range(1, len(ch) - 1):
-            if ch[k] == '1' and ch[k - 1] == '0' and ch[k + 1] == '0':
-                gain = length[k - 1] + length[k + 1]
-                max_gain = max(max_gain, gain)
+            if ch[k] == '1' and ch[k-1] == '0' and ch[k+1] == '0':
+                maxGain = max(maxGain, length[k-1] + length[k+1])
 
-        return ones + max_gain
+        return ones + maxGain
 ```
 
 ---
