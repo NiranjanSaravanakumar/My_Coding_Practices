@@ -1,6 +1,7 @@
-/* Write a query which does the following
-- Add a new column 'Hourly_Pay' to the table employee and set the value as 100 by default.
+/* Write a query to do the following
+- Set hourly_pay to 150 for HR employees
 - Output the entire table
 */
-alter table employee add column Hourly_Pay int default 100;
+
+update  employee set Hourly_pay = 150  where Department = 'Hr';
 select * from employee;
