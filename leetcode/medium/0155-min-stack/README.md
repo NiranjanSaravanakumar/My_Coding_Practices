@@ -50,46 +50,35 @@ minStack.getMin(); // return -2
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 35 ms (beats 34.38%)  
-**Memory:** 100.1 MB (beats 37.22%)  
-**Submitted:** 2026-07-22T06:22:44.667Z  
+**Language:** Python  
+**Runtime:** 0 ms  
+**Memory:** 19.4 MB  
+**Submitted:** 2026-07-22T06:23:10.324Z  
 
-```java
-class MinStack {
+```py
+class MinStack:
 
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
+    def __init__(self):
+        self.stack = []
+        self.minStack = []
 
-    public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
-    }
+    def push(self, value: int) -> None:
+        self.stack.append(value)
 
-    public void push(int val) {
+        if not self.minStack:
+            self.minStack.append(value)
+        else:
+            self.minStack.append(min(value, self.minStack[-1]))
 
-        stack.push(val);
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minStack.pop()
 
-        if (minStack.isEmpty()) {
-            minStack.push(val);
-        } else {
-            minStack.push(Math.min(val, minStack.peek()));
-        }
-    }
+    def top(self) -> int:
+        return self.stack[-1]
 
-    public void pop() {
-        stack.pop();
-        minStack.pop();
-    }
-
-    public int top() {
-        return stack.peek();
-    }
-
-    public int getMin() {
-        return minStack.peek();
-    }
-}
+    def getMin(self) -> int:
+        return self.minStack[-1]
 ```
 
 ---
