@@ -51,9 +51,9 @@ minStack.getMin(); // return -2
 ## Solution
 
 **Language:** Python  
-**Runtime:** 67 ms (beats 80.46%)  
-**Memory:** 31.1 MB (beats 60.09%)  
-**Submitted:** 2026-07-22T06:23:15.066Z  
+**Runtime:** 68 ms (beats 79.80%)  
+**Memory:** 31.2 MB (beats 52.55%)  
+**Submitted:** 2026-07-22T06:23:37.061Z  
 
 ```py
 class MinStack:
