@@ -63,23 +63,21 @@ It can be shown that no other mapping can provide a lower cost.
 
 ## Solution
 
-**Language:** Python  
+**Language:** Java  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 19.3 MB (beats 16.35%)  
-**Submitted:** 2026-07-30T06:33:17.414Z  
+**Memory:** 43.3 MB (beats 28.23%)  
+**Submitted:** 2026-07-30T06:34:40.198Z  
 
-```py
-class Solution:
-    def minimumPushes(self, word: str) -> int:
-        curpush = 1
-        res = 0
-        count = 0
-        for c in word:
-            if count > 0 and count % 8 == 0:
-                curpush += 1
-            res += curpush
-            count += 1
-        return res
+```java
+class Solution {
+    public int minimumPushes(String word) {
+        int res = 0;
+        for(int i=0;i<word.length();i++){
+            res += (i/8) + 1;
+        }
+        return res;
+    }
+}
 ```
 
 ---
