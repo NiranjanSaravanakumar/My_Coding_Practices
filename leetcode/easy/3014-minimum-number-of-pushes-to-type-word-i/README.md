@@ -64,24 +64,20 @@ It can be shown that no other mapping can provide a lower cost.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms (beats 29.67%)  
-**Memory:** 43.4 MB (beats 16.51%)  
-**Submitted:** 2026-07-30T06:30:05.468Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 43.1 MB (beats 79.43%)  
+**Submitted:** 2026-07-30T06:31:34.101Z  
 
 ```java
 class Solution {
     public int minimumPushes(String word) {
-        int curpush =1;
-        int res = 0;
-        int count =0;
-        for(char c:word.toCharArray()){
-            if(count>0 && count%8==0){
-                curpush++;
-            }
-            res += curpush;
-            count++;
-        }
-        return res;
+        int n = word.length();
+        int rem = n % 8;
+        int comp = n / 8;
+
+        int ans = 8 * (comp * (comp + 1) / 2) + (comp + 1) * rem;
+
+        return ans;
     }
 }
 ```
