@@ -1,11 +1,7 @@
 class Solution:
     def minimumPushes(self, word: str) -> int:
-        curpush = 1
         res = 0
-        count = 0
-        for c in word:
-            if count > 0 and count % 8 == 0:
-                curpush += 1
-            res += curpush
-            count += 1
+        for i in range(len(word)):
+            # Integer division by 8 tells us how many times to increment
+            res += (i // 8) + 1
         return res
