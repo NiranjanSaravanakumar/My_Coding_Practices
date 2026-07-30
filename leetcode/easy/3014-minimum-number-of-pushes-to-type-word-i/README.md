@@ -64,9 +64,9 @@ It can be shown that no other mapping can provide a lower cost.
 ## Solution
 
 **Language:** Python  
-**Runtime:** 0 ms  
-**Memory:** 19.3 MB  
-**Submitted:** 2026-07-30T06:33:25.593Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 19.1 MB (beats 83.33%)  
+**Submitted:** 2026-07-30T06:33:32.795Z  
 
 ```py
 class Solution:
