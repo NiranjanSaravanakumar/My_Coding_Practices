@@ -42,7 +42,7 @@ Explanation: Here no element is returning atleast 10 number of times, so -1.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-08-11T10:18:58.471Z  
+**Submitted:** 2026-08-11T10:22:31.162Z  
 
 ```java
 class Solution {
