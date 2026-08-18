@@ -66,36 +66,36 @@ There is no integer that appears in only one subarray of size 1.
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.5 MB  
-**Submitted:** 2026-08-18T14:38:17.336Z  
+**Language:** Python  
+**Runtime:** 7 ms (beats 30.74%)  
+**Memory:** 19.4 MB (beats 35.66%)  
+**Submitted:** 2026-08-18T14:42:02.971Z  
 
-```java
-class Solution {
-    public int largestInteger(int[] nums, int k) {
-        int[] count = new int[51];
+```py
+class Solution:
+    def largestInteger(self, nums: List[int], k: int) -> int:
+        count = [0] * 51
 
-        // Generate every subarray of size k
-        for (int i = 0; i <= nums.length - k; i++) {
+        # Generate every subarray of size k
+        for i in range(len(nums) - k + 1):
 
-            // Current subarray: nums[i ... i + k - 1]
-            for (int j = i; j < i + k; j++) {
-                count[nums[j]]++;
-            }
+            seen = [False] * 51
 
-        }
+            # Current subarray: nums[i ... i + k - 1]
+            for j in range(i, i + k):
+                seen[nums[j]] = True
 
-        // Find the largest number appearing in exactly one subarray
-        for (int num = 50; num >= 0; num--) {
-            if (count[num] == 1) {
-                return num;
-            }
-        }
+            # Count each number only once per subarray
+            for num in range(51):
+                if seen[num]:
+                    count[num] += 1
 
-        return -1;
-    }
-}
+        # Find the largest number appearing in exactly one subarray
+        for num in range(50, -1, -1):
+            if count[num] == 1:
+                return num
+
+        return -1
 ```
 
 ---
