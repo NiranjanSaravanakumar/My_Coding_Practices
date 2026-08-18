@@ -67,9 +67,9 @@ There is no integer that appears in only one subarray of size 1.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 2 ms (beats 72.63%)  
-**Memory:** 44.8 MB (beats 69.12%)  
-**Submitted:** 2026-08-18T14:37:45.558Z  
+**Runtime:** 0 ms  
+**Memory:** 42.5 MB  
+**Submitted:** 2026-08-18T14:38:17.336Z  
 
 ```java
 class Solution {
@@ -79,19 +79,11 @@ class Solution {
         // Generate every subarray of size k
         for (int i = 0; i <= nums.length - k; i++) {
 
-            boolean[] seen = new boolean[51];
-
             // Current subarray: nums[i ... i + k - 1]
             for (int j = i; j < i + k; j++) {
-                seen[nums[j]] = true;
+                count[nums[j]]++;
             }
 
-            // Count this number in exactly one subarray
-            for (int num = 0; num <= 50; num++) {
-                if (seen[num]) {
-                    count[num]++;
-                }
-            }
         }
 
         // Find the largest number appearing in exactly one subarray
