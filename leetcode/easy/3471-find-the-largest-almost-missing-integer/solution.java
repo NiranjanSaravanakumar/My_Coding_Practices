@@ -5,19 +5,11 @@ class Solution {
         // Generate every subarray of size k
         for (int i = 0; i <= nums.length - k; i++) {
 
-            boolean[] seen = new boolean[51];
-
             // Current subarray: nums[i ... i + k - 1]
             for (int j = i; j < i + k; j++) {
-                seen[nums[j]] = true;
+                count[nums[j]]++;
             }
 
-            // Count this number in exactly one subarray
-            for (int num = 0; num <= 50; num++) {
-                if (seen[num]) {
-                    count[num]++;
-                }
-            }
         }
 
         // Find the largest number appearing in exactly one subarray
