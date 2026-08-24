@@ -65,9 +65,9 @@ Bob wins because 9 + 3 + 2 + 9 = 5 + 9 + 2 + 7.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.1 MB  
-**Submitted:** 2026-08-24T10:03:42.972Z  
+**Runtime:** 11 ms (beats 5.04%)  
+**Memory:** 47.1 MB (beats 43.17%)  
+**Submitted:** 2026-08-24T10:03:46.691Z  
 
 ```java
 class Solution {
