@@ -43,25 +43,22 @@ The numbers `"1,000"`, `"1,001"`, and `"1,002"` each contain one comma, giving a
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 1 ms (beats 99.36%)  
-**Memory:** 42.6 MB (beats 56.41%)  
-**Submitted:** 2026-09-09T15:04:59.525Z  
+**Language:** Python  
+**Runtime:** 3 ms (beats 19.73%)  
+**Memory:** 19.2 MB (beats 87.75%)  
+**Submitted:** 2026-09-09T15:06:12.779Z  
 
-```java
-class Solution {
-    public long countCommas(long n) {
-        long commas = 0;
-        long threshold = 1000;
+```py
+class Solution:
+    def countCommas(self, n: int) -> int:
+        commas = 0
+        threshold = 1000
 
-        while (threshold <= n) {
-            commas += n - threshold + 1;
-            threshold *= 1000;
-        }
+        while threshold <= n:
+            commas += n - threshold + 1
+            threshold *= 1000
 
-        return commas;
-    }
-}
+        return commas
 ```
 
 ---
