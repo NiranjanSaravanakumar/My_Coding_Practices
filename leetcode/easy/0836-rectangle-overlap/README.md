@@ -47,21 +47,15 @@ Output: false
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 42.1 MB (beats 99.06%)  
-**Submitted:** 2026-09-14T07:49:12.433Z  
+**Memory:** 19 MB (beats 99.76%)  
+**Submitted:** 2026-09-14T07:57:07.657Z  
 
-```java
-class Solution {
-    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
-
-        return rec1[0] < rec2[2] &&
-               rec2[0] < rec1[2] &&
-               rec1[1] < rec2[3] &&
-               rec2[1] < rec1[3];
-    }
-}
+```py
+class Solution:
+    def isRectangleOverlap(self, rec1: List[int], rec2: List[int]) -> bool:
+        return rec1[0] < rec2[2] and rec2[0] < rec1[2] and rec1[1] < rec2[3] and rec2[1] < rec1[3]
 ```
 
 ---
