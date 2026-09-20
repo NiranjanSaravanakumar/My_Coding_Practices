@@ -52,9 +52,9 @@ Explanation: Notice that while the set of substrings ["d","abba","cc"] also has 
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms  
-**Memory:** 43 MB  
-**Submitted:** 2026-09-18T15:30:57.575Z  
+**Runtime:** 8 ms (beats 96.16%)  
+**Memory:** 47.8 MB (beats 88.24%)  
+**Submitted:** 2026-09-18T15:31:00.826Z  
 
 ```java
 class Solution {
