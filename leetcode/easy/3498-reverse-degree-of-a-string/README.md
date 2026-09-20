@@ -55,24 +55,21 @@ The reverse degree is `1 + 52 + 3 + 104 = 160`.
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 1 ms (beats 100.00%)  
-**Memory:** 44.2 MB (beats 18.31%)  
-**Submitted:** 2026-09-20T14:35:00.896Z  
+**Language:** Python  
+**Runtime:** 9 ms (beats 27.39%)  
+**Memory:** 19.3 MB (beats 55.57%)  
+**Submitted:** 2026-09-20T14:39:39.782Z  
 
-```java
-class Solution {
-    public int reverseDegree(String s) {
-        int sum = 0;
-        int i = 1;
-        for(char c : s.toCharArray()){
-           int d = 26 - (c - 'a');
-           sum = sum + (d * i);
-           i++;
-        }
-        return sum;
-    }
-}
+```py
+class Solution:
+    def reverseDegree(self, s: str) -> int:
+        total = 0
+        
+        for i, c in enumerate(s, 1):
+            d = 26 - (ord(c) - ord('a'))
+            total += d * i
+        
+        return total
 ```
 
 ---
