@@ -46,43 +46,41 @@ Explanation: The optimal solution is to remove the last three elements and the f
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 4 ms (beats 98.07%)  
-**Memory:** 102.2 MB (beats 44.57%)  
-**Submitted:** 2026-09-23T13:42:25.245Z  
+**Language:** Python  
+**Runtime:** 82 ms (beats 61.68%)  
+**Memory:** 31.1 MB (beats 54.43%)  
+**Submitted:** 2026-09-23T13:43:25.409Z  
 
-```java
-class Solution {
-    public int minOperations(int[] nums, int x) {
-        int n = nums.length;
-        long totalSum = 0;
-        for (int num : nums) {
-            totalSum += num;
-        }
-        long target = totalSum - x;
-        // We need to keep a subarray with sum = target
-        if (target < 0) {
-            return -1;
-        }
-        int left = 0;
-        long windowSum = 0;
-        int maxLength = -1;
-        for (int right = 0; right < n; right++) {
-            windowSum += nums[right];
-            while (left <= right && windowSum > target) {
-                windowSum -= nums[left];
-                left++;
-            }
-            if (windowSum == target) {
-                maxLength = Math.max(maxLength, right - left + 1);
-            }
-        }
-        if (maxLength == -1) {
-            return -1;
-        }
-        return n - maxLength;
-    }
-}
+```py
+class Solution:
+    def minOperations(self, nums: list[int], x: int) -> int:
+        n = len(nums)
+
+        total_sum = sum(nums)
+        target = total_sum - x
+
+        # We need to keep a subarray with sum = target
+        if target < 0:
+            return -1
+
+        left = 0
+        window_sum = 0
+        max_length = -1
+
+        for right in range(n):
+            window_sum += nums[right]
+
+            while left <= right and window_sum > target:
+                window_sum -= nums[left]
+                left += 1
+
+            if window_sum == target:
+                max_length = max(max_length, right - left + 1)
+
+        if max_length == -1:
+            return -1
+
+        return n - max_length
 ```
 
 ---
