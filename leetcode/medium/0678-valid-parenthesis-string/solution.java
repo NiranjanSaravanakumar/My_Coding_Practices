@@ -1,23 +1,34 @@
 class Solution {
     public boolean checkValidString(String s) {
-        int mino=0,maxo=0;
-        for(int i=0;i<s.length();i++){
+        Stack<Integer> leftParentheses = new Stack<>();
+        Stack<Integer> stars = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c=='('){
-                mino++;
-                maxo++;
-            }else if(c==')'){
-                mino--;
-                maxo--;
-            }else{
-                maxo++;
-                mino--;
+            if (c == '(') {
+                leftParentheses.push(i);
+            } else if (c == '*') {
+                stars.push(i);
+            } else if (c == ')') {
+                if (!leftParentheses.isEmpty()) {
+                    leftParentheses.pop();
+                } else if (!stars.isEmpty()) {
+                    stars.pop();
+                } else {
+                    return false;
+                }
             }
-            if(maxo<0){
-                return false;
-            }
-            mino=Math.max(0,mino);
         }
-        return mino==0;
+
+        while (!leftParentheses.isEmpty() && !stars.isEmpty()) {
+            if (leftParentheses.peek() < stars.peek()) {
+                leftParentheses.pop();
+                stars.pop();
+            } else {
+                stars.pop();
+            }
+        }
+
+        return leftParentheses.isEmpty();
     }
 }
