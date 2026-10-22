@@ -57,9 +57,9 @@ Output: false
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42.6 MB  
-**Submitted:** 2026-10-04T16:09:25.593Z  
+**Runtime:** 1 ms (beats 26.70%)  
+**Memory:** 42.6 MB (beats 82.94%)  
+**Submitted:** 2026-10-04T16:09:30.642Z  
 
 ```java
 class Solution {
